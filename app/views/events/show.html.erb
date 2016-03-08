@@ -1,0 +1,43 @@
+<div class="flip">
+  <div class="card"> 
+    <div class="face front">
+      <%= image_tag(@event.image) %> 
+    </div> 
+
+    <div class="face back">
+      <br>
+      <br>
+      <br>
+      <div class="container1">
+        <div class="cube1">
+        <h4>
+          <% if @event.start_date == @event.end_date %>
+          <%= @event.start_date.strftime("%B %-m, %Y") %>
+          <%= @event.time.strftime(" at %l:%M%P") %> 
+          <% else %>
+          <%= @event.start_date.strftime("%B %-m, %Y") %>
+          <%= @event.time.strftime(" at %l:%M%P") %><br>
+          until <%= @event.end_date.strftime("%B %-m, %Y") %>
+          <% end %></h4><br>
+
+            <h2><%= @event.title %></h2>
+            <h4><%= @event.description %></h4>
+            <h4> Address : <%= @event.address %>, Montreal</h4>
+
+            <br><br></div></div>
+
+    <div class="container2">
+        <div class="cube2">
+        <h6><%= link_to "SAVE", event_engagements_path(@event), method: 'POST', style: "color: green" %>
+      
+
+<!--       <h6>
+        <%= link_to "EDIT", edit_event_path(@event), style: "color: green" %>
+      </h6> -->
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+

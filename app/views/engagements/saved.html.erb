@@ -1,0 +1,51 @@
+<div id= "titles">
+  <ul class="small-block-grid-1"><br>
+    <li>&nbsp;YOUR SAVED EVENTS</li>
+  </ul>
+</div>
+
+<% @engagements.each do |engagement| %>
+        <div class="flip">
+          <div class="card"> 
+            <div class="face front">
+              <%= image_tag(engagement.event.image) %> 
+            </div> 
+
+            <div class="face back">
+              <br>
+              <br>
+              <br>
+              <div class="container1">
+              <div class="cube1">
+              <h4>
+             <% if engagement.event.start_date == engagement.event.end_date %>
+              <%= engagement.event.start_date.strftime("%B %-m, %Y") %><%= engagement.event.time.strftime(" at %l:%M%P") %> 
+
+              <% else %>
+              <%= engagement.event.start_date.strftime("%B %-m, %Y") %><%= engagement.event.time.strftime(" at %l:%M%P") %> <br>
+              until <%= engagement.event.end_date.strftime("%B %-m, %Y") %>
+              <% end %></h4><br>
+
+
+              <h2><%= engagement.event.title %></h2>
+              <h4><%= engagement.event.description %></h4>
+              <h4> Address : <%= engagement.event.address %>, Montreal</h4>
+
+                <br><br>
+              </div></div>
+
+        <div class="container3">
+        <div class="cube3">
+              <h6><%= link_to "REMOVE EVENT", event_engagement_path(engagement.event, engagement), method: 'DELETE', id: "event-engagement-#{engagement.id}", style: "color: green" %>
+              </h6>
+        </div>
+        </div>
+        </div>
+      </div>
+      </div>
+
+<% end %>  
+
+
+<%= paginate @events %>
+

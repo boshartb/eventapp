@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "WHAT WE DO" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+
+<body class="<%= controller_name %> <%= action_name %>">
+<div ul class="small-block-grid-3">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: small,large">
+        <ul class="title-area">
+          <% if current_user %>
+          <li class="name"><h1><%= link_to 'WHAT WE DO IS SECRET', root_path %></h1></li>
+
+          <% else %>
+          <li class="name"><h1><%= link_to 'WHAT WE DO', root_path %></h1></li> 
+          <% end %>
+        </ul></section>
+
+  <section class="top-bar-section">
+        <ul class="right">
+          <% if current_user %>
+            <li><%= link_to "logout", :logout, method: :post %></li>
+              <% else %>
+                <li><%= link_to "sign up", new_user_path %></li>
+                <li><%= link_to "login", :login %></li>
+            <% end %>
+        </ul>   
+      </section>
+    </nav>
+</div>
+
+    <div class="icon-bar five-up">
+      <a class="item" href="<%= engagements_saved_path %>">
+        <%= image_tag("fi-star.svg") %>
+        <label>my saved</label>
+      </a>
+
+      <a class="item" href="<%= new_event_path %>">
+        <%= image_tag("fi-clipboard-pencil.svg") %>
+        <label>create event</label>
+      </a>
+
+      <a class="item" href="<%= events_path %>">
+        <%= image_tag("fi-home.svg") %>
+        <label>events</label>
+      </a>
+
+      <a class="item" href="<%= events_archived_path %>">
+              <%= image_tag("fi-eye.svg") %>
+        <label>past events</label>
+      </a>
+
+      <a class="item" href="<%= events_info_path %>">
+        <%= image_tag("fi-info.svg") %>
+        <label>info</label>
+      </a>
+    </div>
+    
+<div class="row">
+<div class="small-5 small-centered columns">
+    <% if flash[:notice] %>
+      <h5><font color="white"><center> <%= flash[:notice] %></h5></center>
+    <% end %>
+    <% if flash[:deal] %>
+      <center> <img src="//i.imgur.com/sEinL.gif"></center>
+    <% end %>
+</div>
+</div>
+    <%= yield %>
+
+  </body>
+</html>
+
+

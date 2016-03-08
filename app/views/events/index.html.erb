@@ -1,0 +1,20 @@
+<div id= "titles">
+  <ul class="small-block-grid-3"><br> 
+    <li>&nbsp;MONTREAL EVENTS</li>
+    <li> </li>
+    <li><ul class="small-block-grid-3">
+          <li><%= form_tag events_path, method: :get, authentication: false, id: 'search-form' do %><%= select_tag(:category_id, 
+          options_for_select(Category.all.map{|c| [c.name, c.id] }), include_blank: "Event Type") %></li>
+          <li><%= text_field_tag :search, params[:search], :placeholder => "Search Words" %></li>
+          <li><%= submit_tag "Go!" %><% end %></li>
+      </ul>
+  </ul>
+</div>
+  <ul id="events" class="small-block-grid-3 medium-block-grid-4 large-block-grid-5">
+    <%= render @events %>
+  </ul>
+  
+
+<div id="hidden">
+   <%= paginate @events %>
+</div>

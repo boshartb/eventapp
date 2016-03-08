@@ -1,0 +1,67 @@
+<br>
+<br>
+<div class="large-4 large-centered columns">
+    <ul class="pricing-table">
+      <li class="title"><h3>Create Event</h3>
+<%= simple_form_for @event, :html => {:multipart => true} do |f| %>
+<form>
+    </li><br>
+
+
+<center>
+    <li class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </li>
+
+
+    <li class="field">
+      <%= f.label :street_address %><br>
+      <%= f.text_area :address %>
+    </li>
+
+</center>
+    <li class="field">
+      <%= f.label :image %><br>
+      <%= f.file_field :image %>
+    </li>  
+
+    <li class="field">
+    <input type="text" placeholder=" or Enter a URL...">
+<!--       <%= f.label :remote_image_url, "or image URL" %><br />
+      <%= f.text_field :remote_image_url %> -->
+    </li> 
+<center>
+    <li class="field">
+      <%= f.label :Start_date %><br>
+      <%= f.date_field :start_date %>
+    </li>
+
+    <li class="field">
+      <%= f.label :time %><br>
+      <%= f.time_field :time %>
+    </li>
+
+    <li class="field">
+      <%= f.label :end_date %><br>
+      <%= f.date_field :end_date %>
+    </li>
+ 
+    <li class="field">
+      <%= f.association :category %>
+    </li>
+
+    <li class="field">
+      <%= f.label :description %><br>
+      <%= f.text_area :description %>
+    </li>
+
+
+      </li>
+      <%= f.submit "Save" %>
+    </li> 
+    </center><br>  
+  <% end %>
+</div>    
+</form>
+  

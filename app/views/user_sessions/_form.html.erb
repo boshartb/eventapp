@@ -1,0 +1,25 @@
+<br>
+<br>
+<div class="large-4 large-centered columns">
+    <ul class="pricing-table">
+      <li class="title"><h3>Login</h3>
+<%= form_tag user_sessions_path, :method => :post do %>
+    </li><br>
+
+    <li class="field">
+    <%= label_tag :name %><br/>
+    <%= text_field_tag :name %>
+    </li>
+    <br>
+
+    <li class="field">
+    <%= label_tag :password %><br/>
+    <%= password_field_tag :password %>
+    </li></TEXT="white">
+
+    <li class="field">
+    <%= submit_tag "Login" %>
+    </li>
+<% end %>
+<br>
+</div>

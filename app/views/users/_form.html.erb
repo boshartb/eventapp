@@ -1,0 +1,41 @@
+<br>
+<br>
+<div class="large-4 large-centered columns">
+    <ul class="pricing-table">
+      <li class="title">New User
+        <%= form_for(@user) do |f| %>
+          <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+              <ul>
+                 <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+              </ul>
+            </div>
+      <% end %></li><br>
+
+      <li class="field">
+        <%= f.label :name %> <br>  
+        <%= f.text_field :name %>
+      </li>
+
+      <li class="field">
+       <%= f.label :password %> <br>
+       <%= f.password_field :password %>
+     </li>
+
+     <li class="field">
+       <%= f.label :password_confirmation %> <br>
+       <%= f.password_field :password_confirmation %>
+     </li>
+
+     <li class="actions">
+      <%= f.submit %>
+    </li>
+    <% end %>
+    <br>
+</div>
+
+
+
